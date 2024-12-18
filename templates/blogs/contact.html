@@ -1,0 +1,70 @@
+<style>
+
+.form-control, .btn {
+            margin-bottom: 15px;
+        }
+          .form{
+            max-width: 300px;
+          }
+        iframe {
+            border-radius: 20px;
+        }
+    .social {
+        font-size: 30px;
+    }
+     
+    .top {
+        margin-top: 150px;
+        margin-bottom: 180px;
+        border: 2px solid black;
+        padding: 40px;
+        border-radius: 15px;
+    }
+</style>
+
+
+   
+
+  <section id="contact" class=" pt-5 top container  ">
+    <div class="row d-flex align-items-center">
+       
+        <div class="col-md-4 mb-4  justify-content-left">
+            <h2>ALOQA</h2>
+            <form class="container   gap-3 py-4 px-3 " id="tg" >
+              
+                       
+                <div class="mb-3 form ">
+                    <label for="name" class="form-label">Ism</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+            
+                <div class="mb-3 form ">
+                    <label for="number" class="form-label">Telefon raqam</label>
+                    <input type="number" id="number" name="number" class="form-control" 
+                            placeholder="+998901234567" required>
+                </div>
+    
+                <button type="submit" class="btn btn-warning text-white">Jo'natish</button>
+            </form>
+            <p>📞 <a href="tel:{{ contact_info.phone_number }}" class="text-dark text-decoration-none"><strong>{{ contact_info.phone_number }}</strong></a></p>
+            <p>📧 <a href="mailto:{{ contact_info.email }}" class="text-dark text-decoration-none"><strong>{{ contact_info.email }}</strong></a></p>
+            <p>📍 <a href="https://www.google.com/maps?q={{ contact_info.address }}" target="_blank" class="text-dark text-decoration-none"><strong>{{ contact_info.address }}</strong></a></p>
+            <div class="d-flex gap-4">
+                <a href="{{contact_info.instagram|default:'https://www.instagram.com/'}}" target="_blank" class="bi bi-instagram text-danger social"></a>
+                <a href="{{contact_info.telegram|default:'https://web.telegram.org/k/'}}" target="_blank" class="bi bi-telegram text-danger social"></a>
+                <a href="{{ contact_info.youtube|default:'https://www.youtube.com/' }}"   target="_blank"  class="bi bi-youtube text-danger social">
+             </a>
+             
+
+            </div>
+        </div>
+
+       
+        <div class="col-md-8 ">
+            <iframe 
+                src="{{ contact_info.location }}"
+                width="100%" height="500" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>

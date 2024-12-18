@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+main {
+    flex: 1; 
+}
+
+footer {
+    background-color: rgba(128, 128, 128, 0.25); 
+    border-top: 1px solid #dee2e6;
+}
+
+.hero{
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.668), rgba(0, 0, 0, 0.77)), url('../img/hero.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero_title{
+    max-width: 900px;
+}
+
+
+.hero_text{
+    max-width: 850px;
+}
+
+
+
+.nav-text:hover{
+    color: #ffc107  !important;
+}
+
+
+
+

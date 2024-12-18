@@ -1,0 +1,33 @@
+<section id="gallery" class="pt-5" >
+  <div class="container-fluid">
+    <h2 class="text-center mb-5">Maktab Rasmlari Gallereyasi</h2>
+    
+    <div id="galleryCarousell" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        {% for chunk in reversed_gallery %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="row justify-content-center">
+              {% for gallery in chunk %}
+                {% if gallery %}
+                  <div class="col-md-2 col-6 mb-3 d-flex justify-content-center">
+                    <img src="{{ gallery.gallery.url }}" class="img-fluid gallery-img" alt="Rasm" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); object-fit: cover; height: 250px; width: 300px;">
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    
+      <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousell" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon btn btn-warning" aria-hidden="true"></span>
+        <span class="visually-hidden">Oldingi</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousell" data-bs-slide="next">
+        <span class="carousel-control-next-icon btn btn-warning" aria-hidden="true"></span>
+        <span class="visually-hidden">Keyingi</span>
+      </button>
+    </div>
+    
+  </div>
+</section>

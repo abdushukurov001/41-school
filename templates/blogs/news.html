@@ -1,0 +1,106 @@
+<style>
+  .card-title {
+    font-weight: bold;
+    color: #0056b3;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+   #news{
+    padding-top: 140px;
+   }
+  .btn-primary { 
+    background-color: #007bff;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+
+    border-radius: 50%;
+  }
+
+  .slider,
+.slider-next {
+  position: absolute;
+  top: auto; /* Remove the top positioning */
+  bottom: -20px; /* Position buttons near the bottom */
+  z-index: 10; /* Ensure buttons appear on top */
+  width: 50px; /* Adjust width if needed */
+}
+
+.slider-icon ,
+.slider-next-icon  {
+  background-color: #ffc107 ;
+  border-radius: 50%;
+}
+
+  .read-more {
+    cursor: pointer;
+    color: #ffc107;
+    text-decoration: underline;
+  }
+</style>
+
+<section id="news" class="container mb-5 mt-5">
+  <h2 class='text-center card-title text-dark mb-5' >Yangiliklar</h2>
+  <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for new in news %}
+      {% if forloop.counter0|divisibleby:4 %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+      {% endif %}
+          <div class="col mb-4">
+            <div class="card h-100 shadow-sm">
+              <img src="{{ new.news_img.url }}" class="card-img-top" height="200" alt="Yangilik surati">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title text-black">{{ new.title|upper }}</h5>
+                <p class="card-text">
+                  {{ new.news|slice:":100" }}<span class="dots">...</span>
+                  <span class="more-text d-none">{{ new.news|slice:"100:" }}</span>
+                  <span class="read-more">Ko'proq o'qish</span>
+                </p>
+              </div>
+            </div>
+          </div>
+      {% if forloop.counter|divisibleby:4 or forloop.last %}
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev slider" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon slider-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next slider-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon slider-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const readMoreLinks = document.querySelectorAll(".read-more");
+    readMoreLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        const parent = this.closest(".card-text");
+        const dots = parent.querySelector(".dots");
+        const moreText = parent.querySelector(".more-text");
+
+        dots.classList.toggle("d-none");
+        moreText.classList.toggle("d-none");
+
+        this.textContent = dots.classList.contains("d-none") ? "Yashirish" : "Ko'proq o'qish";
+      });
+    });
+  });
+</script>
