@@ -62,7 +62,7 @@ class TeachersModal(models.Model):
     def __str__(self):
         return f" O'qituvchilar: {self.first_name} {self.last_name}"
     class Meta:
-        db_table = "oqituvchilar"
+        db_table = "oqituvchilar" 
         verbose_name = "O'qituvchi"
         verbose_name_plural = "O'qituvchilar"
 

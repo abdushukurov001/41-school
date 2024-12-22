@@ -1,4 +1,4 @@
-<section id="gallery" class="pt-5">
+<section id="gallery" class="pt-5" style="scroll-margin-top: 5rem;margin-top: 200px;">
   <div class="container-fluid">
     <h2 class="text-center mb-5">Maktab Rasmlari Gallereyasi</h2>
 
@@ -9,11 +9,10 @@
       data-bs-interval="3000"
     >
       <div class="carousel-inner">
-        {% for chunk in reversed_gallery %}
+        {% for gallery in reversed_gallery %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
           <div class="row justify-content-center">
-            {% for gallery in chunk %} {% if gallery %}
-            <div class="col-md-2 col-6 mb-3 d-flex justify-content-center">
+            <div class="col-md-3 col-6 mb-3 d-flex justify-content-center">
               <img
                 src="{{ gallery.gallery.url }}"
                 class="img-fluid gallery-img"
@@ -22,11 +21,11 @@
                   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
                   object-fit: cover;
                   height: 250px;
-                  width: 350px;
+                  width: 100%;
                 "
               />
             </div>
-            {% endif %} {% endfor %}
+           
           </div>
         </div>
         {% endfor %}

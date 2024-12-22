@@ -33,3 +33,16 @@ document.getElementById('tg').addEventListener('submit',function(e){
   })
 })
 
+
+
+function scrollToSection(id) {
+  const element = document.getElementById(id);
+  if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  } else {
+      console.warn(`Section with id ${id} not found`);
+  }
+}
+
+
