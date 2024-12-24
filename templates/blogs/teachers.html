@@ -1,9 +1,7 @@
-
-
 <section id="teachers" class="pt-5" style="scroll-margin-top: 5rem; margin-top: 200px;">
   <div class="container bg-dark text-white pt-5 py-5 rounded">
-    <h2 class="container text-center mb-3">Ustozlarimiz</h2>
-    <p class="container text-center mb-5">
+    <h2 class="text-center mb-3">Ustozlarimiz</h2>
+    <p class="text-center mb-5">
       4 - sonli umumta'lim ustozlari nafaqat bilimdon, balki yoshlarni
       tarbiyalashda, ularga ma'naviy va axloqiy qadriyatlarni singdirishda ham
       o'zini namoyon qilgan mutaxassislardir. Har bir ustozimiz, ta'lim
@@ -14,31 +12,33 @@
     </p>
     <div
       id="teachersCarousel"
-      class="carousel slide container"
+      class="carousel slide"
       data-bs-ride="carousel"
     >
       <div class="carousel-inner">
-        {% for teacher in teachers_chunks %}
+        {% for chunk in teachers_chunks %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
           <div class="row justify-content-center">
-           
-            <div class="col-md-3 col-12 mb-3 text-center">
-              <div class="">
+            {% for teacher in chunk %}
+            {% if teacher %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 text-center">
+              <div>
                 <img
                   src="{{ teacher.teacher_img.url }}"
                   class="card-img-top rounded-circle"
                   alt="{{ teacher.first_name }} {{ teacher.last_name }}"
-                  style="object-fit: cover; height: 250px; width: 250px"
+                  style="object-fit: cover; height: 250px; width: 250px; max-width: 100%;"
                 />
                 <div class="card-body">
-                  <h5>
+                  <h5 class="text-white">
                     {{ teacher.first_name|title }} {{ teacher.last_name|title }}
                   </h5>
-                  <p class="t">{{ teacher.bio }}</p>
+                  <p class="text-light">{{ teacher.bio }}</p>
                 </div>
               </div>
             </div>
-          
+            {% endif %}
+            {% endfor %}
           </div>
         </div>
         {% endfor %}

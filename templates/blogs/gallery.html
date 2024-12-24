@@ -1,60 +1,132 @@
-<section id="gallery" class="pt-5" style="scroll-margin-top: 5rem;margin-top: 200px;">
-  <div class="container-fluid">
-    <h2 class="text-center mb-5">Maktab Rasmlari Gallereyasi</h2>
+{% block extra_css %}
+<style>
 
-    <div
-      id="galleryCarousell"
-      class="carousel slide"
-      data-bs-ride="carousel"
-      data-bs-interval="3000"
-    >
-      <div class="carousel-inner">
-        {% for gallery in reversed_gallery %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <div class="row justify-content-center">
-            <div class="col-md-3 col-6 mb-3 d-flex justify-content-center">
-              <img
-                src="{{ gallery.gallery.url }}"
-                class="img-fluid gallery-img"
-                alt="Rasm"
-                style="
-                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-                  object-fit: cover;
-                  height: 250px;
-                  width: 100%;
-                "
-              />
-            </div>
-           
-          </div>
-        </div>
-        {% endfor %}
-      </div>
 
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#galleryCarousell"
-        data-bs-slide="prev"
-      >
-        <span
-          class="carousel-control-prev-icon btn btn-warning"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Oldingi</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#galleryCarousell"
-        data-bs-slide="next"
-      >
-        <span
-          class="carousel-control-next-icon btn btn-warning"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Keyingi</span>
-      </button>
-    </div>
+.container {
+  position: relative;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+{% endblock %}
+
+<h2 style="text-align:center">Slideshow Gallery</h2>
+
+<div class="container">
+  {% for gallery in reversed_gallery %}
+  <div class="mySlides">
+    <img src="{{ gallery.gallery.url }}" style="width:100%" height="700px">
   </div>
-</section>
+   {% endfor %}
+
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row mt-5">
+    {% for gallery in reversed_gallery %}
+    <div class="column">
+      <img class="demo cursor" src="{{ gallery.gallery.url }}" style="width: 120px;height: 100px;" onclick="currentSlide({{ forloop.counter }})" alt="Gallery Thumbnail">
+    </div>
+    {% endfor %}
+  </div>
+  
+</div>
+
+
+{% block extra_js %}
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+  
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+  captionText.innerHTML = dots[slideIndex - 1].alt;
+}
+
+</script>
+{% endblock %}
+    
+
+
