@@ -10,6 +10,7 @@
 
   .slideshow-container .cursor {
     cursor: pointer;
+    position: relative;
   }
 
   .slideshow-container .next {
@@ -61,6 +62,14 @@
   #toggleButton:hover {
     background-color: #ffc107d6;
   }
+  .imageSlide {
+    position: relative;
+  }
+  .prev,
+  .next {
+    position: absolute;
+    top: -130px;
+  }
 </style>
 {% endblock %}
 
@@ -74,34 +83,39 @@
   <div class="images">
     {% for gallery in reversed_gallery %}
     <div class="mySlides">
-      <img src="{{ gallery.gallery.url }}" style="width: 100%" height="600px" />
+      <img
+        class="imageSlide"
+        src="{{ gallery.gallery.url }}"
+        style="width: 100%"
+        height="600px"
+      />
+      <button
+        class="carousel-control-prev prev"
+        type="button"
+        data-bs-slide="prev"
+        onclick="plusSlides(-1)"
+      >
+        <span
+          class="carousel-control-prev-icon btn btn-dark"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next next"
+        type="button"
+        data-bs-slide="next"
+        onclick="plusSlides(1)"
+      >
+        <span
+          class="carousel-control-next-icon btn btn-dark"
+          aria-hidden="true"
+        ></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    {% endfor %}
 
-    <button
-      class="carousel-control-prev prev"
-      type="button"
-      data-bs-slide="prev"
-      onclick="plusSlides(-1)"
-    >
-      <span
-        class="carousel-control-prev-icon btn btn-dark"
-        aria-hidden="true"
-      ></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next next"
-      type="button"
-      data-bs-slide="next"
-      onclick="plusSlides(1)"
-    >
-      <span
-        class="carousel-control-next-icon btn btn-dark"
-        aria-hidden="true"
-      ></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    {% endfor %}
 
     <div class="row mt-2" id="imageRow">
       {% for gallery in reversed_gallery %}
@@ -120,9 +134,37 @@
     </div>
 
     <div style="text-align: center; margin-top: 20px">
-      <button id="toggleButton" onclick="toggleImages()">
+      <!-- <button id="toggleButton" onclick="toggleImages()">
         Hammasini ko'rsatish
-      </button>
+      </button> -->
+
+      <svg
+        id="arrowDown"
+        onclick="toggleImages()"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        viewBox="0 0 512 512"
+      >
+        <path
+          d="M256 294.1L96 134.1c-8.8-8.8-8.8-23.2 0-32s23.2-8.8 32 0L256 230.1l128-128c8.8-8.8 23.2-8.8 32 0s8.8 23.2 0 32L256 294.1z"
+        />
+      </svg>
+      <svg
+        id="arrowUp"
+        onclick="toggleImages()"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        viewBox="0 0 512 512"
+        style="display: none"
+      >
+        <path
+          d="M256 217.9L416 377.9c8.8 8.8 8.8 23.2 0 32s-23.2 8.8-32 0L256 281.9l-128 128c-8.8 8.8-23.2 8.8-32 0s-8.8-23.2 0-32L256 217.9z"
+        />
+      </svg>
     </div>
   </div>
 </div>
@@ -166,11 +208,13 @@
     const hiddenImages = document.querySelectorAll(
       '.slideshow-container .demo-container.hidden'
     );
-    const toggleButton = document.getElementById('toggleButton');
+    const arrowDown = document.getElementById('arrowDown');
+    const arrowUp = document.getElementById('arrowUp');
 
     if (hiddenImages.length > 0) {
       hiddenImages.forEach((image) => image.classList.remove('hidden'));
-      toggleButton.innerHTML = 'Yashirish';
+      arrowDown.style.display = 'none';
+      arrowUp.style.display = 'inline';
     } else {
       const allImages = document.querySelectorAll(
         '.slideshow-container .demo-container'
@@ -180,7 +224,8 @@
           image.classList.add('hidden');
         }
       });
-      toggleButton.innerHTML = 'Hammasini ko`rsatish';
+      arrowDown.style.display = 'inline';
+      arrowUp.style.display = 'none';
     }
   }
 </script>
