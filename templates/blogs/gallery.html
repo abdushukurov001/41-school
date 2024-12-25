@@ -1,268 +1,224 @@
-{% block extra_css %}
-<style>
-  .slideshow-container .demo-container.active .demo {
-    opacity: 1; 
-  }
-
-  .slideshow-container .mySlides {
-    opacity: 1; 
-    transition: opacity 0.5s ease;
-  }
-
-  .slideshow-container .demo {
-    opacity: 1; 
-    transition: opacity 0.5s ease; 
-  }
-
-  .slideshow-container {
-    cursor: pointer;
-    position: relative;
-    margin: 0 auto;
-  }
-
-  .slideshow-container .prev,
-.slideshow-container .next {
-  position: absolute;
-  top: 35%; 
-  border-radius: 5px;
-  height: 40px;
-  width: 30px;
-  background-color: rgba(0, 0, 0, 0.5); 
-  color: white;
-  border: none;
- 
-  cursor: pointer;
-  z-index: 1000; 
-}
-
-
-
-.slideshow-container .prev {
-  left: 25px;
-}
-
-.slideshow-container .next {
-  right: 25px;
-}
-
-  .slideshow-container .caption-container {
-    text-align: center;
-    background-color: #222;
-    padding: 2px 16px;
-    color: white;
-  }
-
-  .slideshow-container .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-
-
-  .imageSlide{
-    height: 700px;
-  }
-
-
-  .slideshow-container .column {
-    position: relative;
-    flex: 1 1 200px;
-    max-width: 200px;
-    box-sizing: border-box;
-  }
-
-  .slideshow-container .demo {
-    width: 100%;
-    height: auto;
-    object-fit: cover; 
-  }
-
-  @media (max-width: 768px) {
-    .slideshow-container .column {
-      flex: 1 1 30%;
-    }
-    .imageSlide{
+<!-- {% load static %}
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  />
+  <style>
+    .swiper-container {
+      width: 84%;
       height: 600px;
+      margin: auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      background-color: #1c1c1c;
     }
 
-
-  }
-
-  @media (max-width: 480px) {
-    .slideshow-container .column {
-      flex: 1 1 45%; 
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .imageSlide{
-      height: 450px;
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
     }
-    .slideshow-container .prev,
-    .slideshow-container .next{
-      top: 25%;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-  }
 
- 
-  .demo:hover {
-    opacity: 0.4; 
-  }
-
-  .demo {
-    opacity: 1;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-</style>
-{% endblock %}
-
-
-<div
-  class="container slideshow-container"
-  id="gallery"
-  style="scroll-margin-top: 7rem"
->
-  <h2 style="text-align: center; margin-top: 60px">Maktab Rasmlari</h2>
-
-  <div class="images pt-4">
-    {% for gallery in reversed_gallery %}
-    <div class="mySlides">
-      <img
-        class="imageSlide shadow"
-        src="{{ gallery.gallery.url }}"
-        style="width: 100%"
-       
-      />
-      <button class="carousel-control-prev prev" type="button" onclick="plusSlides(-1)">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      
-      <button class="carousel-control-next next" type="button" onclick="plusSlides(1)">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    
-    </div>
-
-    {% endfor %}
-    <div class="caption-container">
-      4 - Maktab rasmlari
-    </div>
-
-    <div class="row mt-2" id="imageRow">
+    .swiper-pagination-bullet {
+      background: white;
+    }
+    .maktab-rasmlari {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="maktab-rasmlari">Maktab Rasmlari</h2>
+  <div id="gallery" class="swiper-container" style="scroll-margin-top: 7rem">
+    <div class="swiper-wrapper">
       {% for gallery in reversed_gallery %}
-      <div
-        class="column demo-container {% if forloop.counter > 6 %}hidden{% endif %}"
-      >
+      <div class="swiper-slide">
         <img
-          class="demo cursor shadow"
           src="{{ gallery.gallery.url }}"
-          style="width: 150px; height: 120px"
-          onclick="currentSlide({{ forloop.counter }})"
-          alt="Gallery Thumbnail"
+          alt="Slide {{ forloop.counter }}"
         />
       </div>
       {% endfor %}
     </div>
 
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
 
-    <div style="text-align: center; margin-top: 20px">
-
-      <svg
-        id="arrowDown"
-        onclick="toggleImages()"
-        xmlns="http://www.w3.org/2000/svg"
-        width="30"
-        height="30"
-        fill="currentColor"
-        viewBox="0 0 512 512"
-      >
-        <path
-          d="M256 294.1L96 134.1c-8.8-8.8-8.8-23.2 0-32s23.2-8.8 32 0L256 230.1l128-128c8.8-8.8 23.2-8.8 32 0s8.8 23.2 0 32L256 294.1z"
-        />
-      </svg>
-      <svg
-        id="arrowUp"
-        onclick="toggleImages()"
-        xmlns="http://www.w3.org/2000/svg"
-        width="30"
-        height="30"
-        fill="currentColor"
-        viewBox="0 0 512 512"
-        style="display: none"
-      >
-        <path
-          d="M256 217.9L416 377.9c8.8 8.8 8.8 23.2 0 32s-23.2 8.8-32 0L256 281.9l-128 128c-8.8 8.8-23.2 8.8-32 0s-8.8-23.2 0-32L256 217.9z"
-        />
-      </svg>
-    </div>
+    <div class="swiper-pagination"></div>
   </div>
-</div>
 
-{% block extra_js %}
-<script>
-  let slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides((slideIndex += n));
-  }
-
-  function currentSlide(n) {
-    showSlides((slideIndex = n));
-  }
-
-  function showSlides(n) {
-    let i;
-    let slides = document.querySelectorAll('.slideshow-container .mySlides');
-    let dots = document.querySelectorAll('.slideshow-container .demo');
-    let captionText = document.getElementById('caption');
-    if (n > slides.length) {
-      slideIndex = 1;
-    }
-    if (n < 1) {
-      slideIndex = slides.length;
-    }
-
-    slides.forEach((slide) => (slide.style.display = 'none'));
-    dots.forEach(
-      (dot) => (dot.className = dot.className.replace(' active', ''))
-    );
-
-    slides[slideIndex - 1].style.display = 'block';
-    dots[slideIndex - 1].className += ' active';
-    captionText.innerHTML = dots[slideIndex - 1].alt;
-  }
-
-  function toggleImages() {
-    const hiddenImages = document.querySelectorAll(
-      '.slideshow-container .demo-container.hidden'
-    );
-    const arrowDown = document.getElementById('arrowDown');
-    const arrowUp = document.getElementById('arrowUp');
-
-    if (hiddenImages.length > 0) {
-      hiddenImages.forEach((image) => image.classList.remove('hidden'));
-      arrowDown.style.display = 'none';
-      arrowUp.style.display = 'inline';
-    } else {
-      const allImages = document.querySelectorAll(
-        '.slideshow-container .demo-container'
-      );
-      allImages.forEach((image, index) => {
-        if (index >= 6) {
-          image.classList.add('hidden');
-        }
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
       });
-      arrowDown.style.display = 'inline';
-      arrowUp.style.display = 'none';
+    });
+  </script>
+</body> -->
+
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  />
+  <style>
+    .swiper-container {
+      width: 76%;
+      height: 600px;
+      margin: auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      background-color: #212529;
+      margin-top: 100px;
     }
-  }
-</script>
-{% endblock %}
 
+    .swiper-wrapper {
+      display: flex;
+    }
 
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .swiper-slide img {
+      width: 450px;
+      height: 60%;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      margin-bottom: 100px;
+    }
+
+    .swiper-slide-next img,
+    .swiper-slide-prev img {
+      opacity: 0.6;
+      transform: scale(0.8);
+    }
+
+    .swiper-slide-active img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .swiper-pagination-bullet {
+      background: white;
+    }
+
+    .maktab-rasmlari {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 30px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="gallery" class="swiper-container" style="scroll-margin-top: 7rem">
+    <h2 class="maktab-rasmlari">Maktab Rasmlari</h2>
+    <div class="swiper-wrapper">
+      {% for gallery in reversed_gallery %}
+      <div class="swiper-slide">
+        <img
+          src="{{ gallery.gallery.url }}"
+          alt="Slide {{ forloop.counter }}"
+        />
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Swiper('.swiper-container', {
+        loop: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+        },
+      });
+    });
+  </script>
+</body>
