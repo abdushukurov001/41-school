@@ -97,10 +97,10 @@
     </p>
     <div id="teachersCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        {% for chunk in teachers_chunks %}
+        {% for teacher in teachers_chunks %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
           <div class="row justify-content-center">
-            {% for teacher in chunk %} {% if teacher %}
+          
             <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 text-center">
               <div>
                 <img
@@ -122,7 +122,7 @@
                 </div>
               </div>
             </div>
-            {% endif %} {% endfor %}
+          
           </div>
         </div>
         {% endfor %}
