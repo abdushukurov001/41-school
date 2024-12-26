@@ -1,107 +1,14 @@
-<!-- {% load static %}
 <head>
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
   />
-  <style>
-    .swiper-container {
-      width: 84%;
-      height: 600px;
-      margin: auto;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-      background-color: #1c1c1c;
-    }
 
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: white;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .swiper-pagination-bullet {
-      background: white;
-    }
-    .maktab-rasmlari {
-      text-align: center;
-      margin-top: 50px;
-      margin-bottom: 30px;
-    }
-  </style>
-</head>
-<body>
-  <h2 class="maktab-rasmlari">Maktab Rasmlari</h2>
-  <div id="gallery" class="swiper-container" style="scroll-margin-top: 7rem">
-    <div class="swiper-wrapper">
-      {% for gallery in reversed_gallery %}
-      <div class="swiper-slide">
-        <img
-          src="{{ gallery.gallery.url }}"
-          alt="Slide {{ forloop.counter }}"
-        />
-      </div>
-      {% endfor %}
-    </div>
-
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-
-    <div class="swiper-pagination"></div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      new Swiper('.swiper-container', {
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-      });
-    });
-  </script>
-</body> -->
-
-<head>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-  />
   <style>
     .swiper-container {
       width: 76%;
       height: 600px;
-      margin: auto;
+      margin: 100px auto;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);

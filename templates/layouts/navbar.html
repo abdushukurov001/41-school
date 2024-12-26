@@ -1,7 +1,11 @@
 {% load static %}
 <nav
   class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm fixed-top navbar-shadow"
-  style="z-index: 100; width: 100%;   border-bottom: 2px solid rgba(255, 255, 255, 0.2);"
+  style="
+    z-index: 100;
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  "
 >
   <div class="container">
     <a class="navbar-brand" href="#">
@@ -28,67 +32,66 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <a
-              class="nav-link text-white nav-text"
-              href=""
-              onclick="scrollToSection('about'); return false;"
+            class="nav-link text-white nav-text"
+            href=""
+            onclick="scrollToSection('about'); return false;"
           >
-              Biz haqimizda
+            Biz haqimizda
           </a>
-      </li>
+        </li>
         <li class="nav-item">
           <a
-              class="nav-link text-white nav-text"
-              href=""
-              onclick="scrollToSection('gallery'); return false;"
+            class="nav-link text-white nav-text"
+            href=""
+            onclick="scrollToSection('gallery'); return false;"
           >
-              Galereya
+            Galereya
           </a>
-      </li>
-      
-      <li class="nav-item">
-        <a
+        </li>
+
+        <li class="nav-item">
+          <a
             class="nav-link text-white nav-text"
             href=""
             onclick="scrollToSection('teachers'); return false;"
-        >
+          >
             Ustozlar
-        </a>
-    </li>
-    <li class="nav-item">
-      <a
-          class="nav-link text-white nav-text"
-          href=""
-          onclick="scrollToSection('news'); return false;"
-      >
-          Yangiliklar
-      </a>
-  </li>
-  <li class="nav-item">
-    <a
-        class="nav-link text-white nav-text"
-        href=""
-        onclick="scrollToSection('contact'); return false;"
-    >
-        Aloqa
-    </a>
-</li>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-white nav-text"
+            href=""
+            onclick="scrollToSection('news'); return false;"
+          >
+            Yangiliklar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-white nav-text"
+            href=""
+            onclick="scrollToSection('contact'); return false;"
+          >
+            Aloqa
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-
-{% block extra_js %} 
+{% block extra_js %}
 <script>
   function scrollToSection(id) {
-  const element = document.getElementById(id);
-  if (element) {
+    const element = document.getElementById(id);
+    if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       console.log(`Scroll to section: ${id}`);
-  } else {
+    } else {
       console.warn(`Section with id ${id} not found`);
+    }
   }
-}
 </script>
 
 {% endblock%}
