@@ -1,22 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//   const newsModal = document.getElementById('newsModal');
-//   const modalTitle = newsModal.querySelector('.modal-title');
-//   const modalImage = newsModal.querySelector('#modalImage');
-//   const modalText = newsModal.querySelector('#modalText');
-
-//   document.querySelectorAll('.read-more').forEach((button) => {
-//     button.addEventListener('click', function () {
-//       const title = this.getAttribute('data-title');
-//       const text = this.getAttribute('data-text');
-//       const img = this.getAttribute('data-img');
-
-//       modalTitle.textContent = title;
-//       modalImage.src = img;
-//       modalText.textContent = text;
-//     });
-//   });
-// });
-
 document.addEventListener('DOMContentLoaded', function () {
   const newsSwiper = new Swiper('#newsSwiper', {
     slidesPerView: 1,
