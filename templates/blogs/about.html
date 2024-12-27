@@ -1,3 +1,10 @@
+{% load static %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+/>
+<link rel="stylesheet" href="{% static 'main/css/about.css' %}" />
+
 <section
   id="about"
   class="container section py-5"
@@ -13,7 +20,7 @@
           Toshkent viloyati Angren Shahar 4-umumta'lim maktabi IT sohasiga
           ixtisoslashgan.
         </p>
-        <p>{{about}}</p>
+        <p class="about-text">{{about}}</p>
       </div>
     </div>
 
@@ -45,6 +52,9 @@
     </div>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'main/js/about.js' %}"></script>
 
 <!-- {% load static %}
 <link
