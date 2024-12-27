@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 87d8e1a090384ae8b70c92de10e9dfca51bc7491
 document.addEventListener('DOMContentLoaded', function () {
   const newsSwiper = new Swiper('#newsSwiper', {
     slidesPerView: 1,
