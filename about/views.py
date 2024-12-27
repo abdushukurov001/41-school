@@ -8,8 +8,6 @@ def home_view(request):
     reversed_gallery = GalleryModel.objects.all()
     contacts = ContactModel.objects.first()
     teachers = TeachersModal.objects.all()
-    print(teachers)
-    # teachers_chunks = [list(chunk) for chunk in zip_longest(*[iter(teachers)]*3, fillvalue=None)]
     news = NewsModel.objects.all()
 
     

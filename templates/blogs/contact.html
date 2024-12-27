@@ -78,6 +78,13 @@
       width: 100%;
     }
   }
+  .call,
+  .mail,
+  .location {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
 </style>
 
 <section
@@ -116,24 +123,54 @@
           Jo'natish
         </button>
       </form>
-      <p>
-        📞
+      <p class="call">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          width="30"
+          height="30"
+          fill="green"
+        >
+          <path
+            d="M391.1 341.4c-5.7-1.4-37.4-9.8-43.2-12.1-5.8-2.3-10.1-2.1-14.4 3.6-4.3 5.7-16.5 19.4-20.3 23.4-3.7 4-6.7 4.5-12.4 1.6-5.7-2.9-24.1-8.9-45.9-28.4-17-15-28.5-33.6-31.8-39.3-3.3-5.7-.4-8.8 3.3-12.8 3.4-3.7 7.6-9.2 11.4-13.9 3.8-4.7 5-8.1 7.5-13.8 2.5-5.7 1.2-10.6-.6-13.5-1.8-2.9-16.2-38.9-22.2-53.4-5.9-14.5-12-12.4-16.4-12.6-4.2-.2-9.1-.2-14-.2s-13 1.8-19.8 8.9c-6.8 7.1-25.9 25.3-25.9 61.6s26.5 71.6 30.2 76.6c3.7 5 51.9 79.6 125.8 106.5 17.6 6.3 31.3 10.1 42 12.9 17.6 4.4 33.7 3.8 46.4 2.3 14.2-1.7 37.4-15.3 42.7-30.1 5.3-14.8 5.3-27.5 3.7-30.1-1.5-2.6-5.2-3.8-10.9-5.2z"
+          />
+        </svg>
         <a
           href="tel:{{ contact_info.phone_number }}"
           class="text-dark text-decoration-none"
           ><strong>{{ contact_info.phone_number }}</strong></a
         >
       </p>
-      <p>
-        📧
+      <p class="mail">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          width="25"
+          height="25"
+          fill="orange"
+        >
+          <path
+            d="M437.332 80H74.668C56.043 80 41.5 94.543 41.5 113.168v285.664c0 18.625 14.543 33.168 33.168 33.168h362.664c18.625 0 33.168-14.543 33.168-33.168V113.168C470.5 94.543 456.957 80 437.332 80zm-5.666 33.168L256 249.168 80.334 113.168h351.332zM74.668 398.832V151.168l181.332 130.168c6.291 4.504 14.68 4.504 20.97 0L437.332 151.168v247.664H74.668z"
+          />
+        </svg>
         <a
           href="mailto:{{ contact_info.email }}"
           class="text-dark text-decoration-none"
           ><strong>{{ contact_info.email }}</strong></a
         >
       </p>
-      <p>
-        📍
+      <p class="location">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+          width="25"
+          height="25"
+          fill="red"
+        >
+          <path
+            d="M192 0C86 0 0 86 0 192c0 77.4 27.4 99.2 172.4 308.8 9.5 14.3 29.7 14.3 39.2 0C356.6 291.2 384 269.4 384 192 384 86 298 0 192 0zm0 272c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"
+          />
+        </svg>
         <a
           href="https://www.google.com/maps?q={{ contact_info.address }}"
           target="_blank"
@@ -150,7 +187,7 @@
         <a
           href="{{contact_info.telegram|default:'https://web.telegram.org/k/'}}"
           target="_blank"
-          class="bi bi-telegram text-danger social"
+          class="bi bi-telegram text-blue social"
         ></a>
         <a
           href="{{ contact_info.youtube|default:'https://www.youtube.com/' }}"
