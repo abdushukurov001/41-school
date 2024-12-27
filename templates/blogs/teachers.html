@@ -1,92 +1,17 @@
-<style>
-  #teachers {
-    padding-top: 5rem;
-    scroll-margin-top: 5rem;
-    margin-top: 200px;
-  }
+{% load static %}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+/>
+<link rel="stylesheet" href="{% static 'main/css/teachers.css' %}">
 
-  #teachers h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ffc107;
-    margin-bottom: 30px;
-  }
 
-  #teachers p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 40px;
-    color: #d1d1d1;
-  }
 
-  #teachers .carousel-item {
-    padding: 20px;
-  }
 
-  #teachers .card-img-top {
-    object-fit: cover;
-    height: 250px;
-    width: 250px;
-    max-width: 100%;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  #teachers .card-img-top:hover {
-    transform: scale(1.1);
-  }
-
-  #teachers .card-body {
-    text-align: center;
-    padding: 20px;
-  }
-
-  #teachers h5 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #fff;
-  }
-
-  #teachers p.text-light {
-    font-size: 1rem;
-    color: #bbb;
-  }
-
-  @media (max-width: 992px) {
-    #teachers .col-lg-3 {
-      flex: 0 0 45%;
-    }
-  }
-
-  @media (max-width: 768px) {
-    #teachers .col-lg-3 {
-      flex: 0 0 100%;
-    }
-  }
-  .imageSlide {
-    position: relative;
-  }
-  .prev,
-  .next {
-    position: absolute;
-    top: -130px;
-  }
-  .teacher-box {
-    border-radius: 20px;
-  }
-</style>
-
-<section
-  id="teachers"
-  class="pt-5"
-  style="scroll-margin-top: 5rem; margin-top: 200px"
->
-  <div class="container bg-dark text-white pt-5 py-5 teacher-box">
-    <h2 class="text-center mb-3">Ustozlarimiz</h2>
-    <p class="text-center mb-5">
+<div id="teacher" style="scroll-margin-top: 10rem">
+    <div   id="teachers" class=" teachers-swiper-container container" >
+    <h2 class="maktab-rasmlari text-white">Ustozlarimiz</h2>
+    <p class="text-center text-white w-75 mx-auto mb-5">
       4 - sonli umumta'lim ustozlari nafaqat bilimdon, balki yoshlarni
       tarbiyalashda, ularga ma'naviy va axloqiy qadriyatlarni singdirishda ham
       o'zini namoyon qilgan mutaxassislardir. Har bir ustozimiz, ta'lim
@@ -95,62 +20,26 @@
       ustozlarimizning har biri o'z sohasining ustalari bo'lib, har bir darsni
       qiziqarli va samarali o'tkazishga harakat qilishadi.
     </p>
-    <div id="teachersCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        {% for teacher in teachers_chunks %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <div class="row justify-content-center">
-          
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 text-center">
-              <div>
-                <img
-                  src="{{ teacher.teacher_img.url }}"
-                  class="card-img-top rounded-circle imageSlide"
-                  alt="{{ teacher.first_name }} {{ teacher.last_name }}"
-                  style="
-                    object-fit: cover;
-                    height: 250px;
-                    width: 250px;
-                    max-width: 100%;
-                  "
-                />
-                <div class="card-body">
-                  <h5 class="text-white">
-                    {{ teacher.first_name|title }} {{ teacher.last_name|title }}
-                  </h5>
-                  <p class="text-light">{{ teacher.bio }}</p>
-                </div>
-              </div>
-            </div>
-          
-          </div>
-        </div>
-        {% endfor %}
+    <div class="swiper-wrapper">
+      {% for teacher in teachers %}
+      <div class="swiper-slide">
+        <img
+          class="shadow"
+          src="{{ teacher.teacher_img.url }}"
+          alt="{{ teacher.first_name }} {{ teacher.last_name }}"
+        />
+        <h5 class="text-white">{{ teacher.first_name|title }} {{ teacher.last_name|title }}</h5>
+        <p class="text-white">{{ teacher.bio }}</p>
       </div>
-      <button
-        class="carousel-control-prev prev"
-        type="button"
-        data-bs-target="#teachersCarousel"
-        data-bs-slide="prev"
-      >
-        <span
-          class="carousel-control-prev-icon btn btn-dark"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next next"
-        type="button"
-        data-bs-target="#teachersCarousel"
-        data-bs-slide="next"
-      >
-        <span
-          class="carousel-control-next-icon btn btn-dark"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      {% endfor %}
     </div>
+  
+    <div class="swiper-pagination"></div>
   </div>
-</section>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script src="{% static 'main/js/teachers.js' %}"></script>
+

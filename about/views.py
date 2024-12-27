@@ -7,7 +7,8 @@ def home_view(request):
     documents = DocumentModel.objects.all()[:3]
     reversed_gallery = GalleryModel.objects.all()
     contacts = ContactModel.objects.first()
-    teachers_chunks = TeachersModal.objects.all()
+    teachers = TeachersModal.objects.all()
+    print(teachers)
     # teachers_chunks = [list(chunk) for chunk in zip_longest(*[iter(teachers)]*3, fillvalue=None)]
     news = NewsModel.objects.all()
 
@@ -17,6 +18,6 @@ def home_view(request):
         'documents' : documents,
         'reversed_gallery':reversed_gallery,
         'contact_info' :contacts,
-        'teachers_chunks' : teachers_chunks,
+        'teachers' : teachers,
         'news' : news
     })
