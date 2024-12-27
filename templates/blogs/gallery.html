@@ -3,11 +3,10 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
 />
-<link rel="stylesheet" href="{% static 'main/css/gallery.css' %}">
-
+<link rel="stylesheet" href="{% static 'main/css/gallery.css' %}" />
 
 <div id="gallery" class="swiper-container" style="scroll-margin-top: 5rem">
-  <h2 class="maktab-rasmlari ">Maktab Rasmlari</h2>
+  <h2 class="maktab-rasmlari">Maktab Rasmlari</h2>
   <div class="swiper-wrapper">
     {% for gallery in reversed_gallery %}
     <div class="swiper-slide">
@@ -25,4 +24,3 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script src="{% static 'main/js/gallery.js' %}"></script>
-
