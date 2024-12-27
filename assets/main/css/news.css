@@ -2,13 +2,12 @@
   border: 1px solid gray;
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   background: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 #news .card:hover {
-  transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
@@ -119,6 +118,7 @@
 #newsSwiper .swiper-slide {
   display: flex;
   justify-content: center;
+  transform: scale(1);
 }
 
 #newsSwiper .card {
@@ -143,4 +143,8 @@
   cursor: pointer;
   color: #ffc107;
   text-decoration: underline;
+}
+
+#newsSwiper .swiper-slide.swiper-slide-active{
+  transform: scale(1) !important;
 }

@@ -1,22 +1,137 @@
 {% load static %}
 
+<style>
+  footer {
+    background-color: #212529;
+    color: #fff;
+  }
+
+  footer a {
+    color: #2760fd;
+    text-decoration: none;
+  }
+
+  footer .nav-text {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  footer img {
+    border-radius: 50%;
+  }
+
+  footer .container {
+    max-width: 1200px;
+  }
+
+  @media (max-width: 992px) and (min-width: 768px) {
+    footer .d-flex {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    footer .nav {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    footer .nav li {
+      flex: 1 1 calc(50% - 1rem);
+      text-align: center;
+    }
+
+    footer p {
+      margin-top: 1rem;
+      font-size: 14px;
+    }
+
+    footer img {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  @media (max-width: 576px) {
+    footer .d-flex {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    footer .nav {
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    footer .nav li {
+      width: 100%;
+      text-align: center;
+    }
+
+    footer img {
+      width: 50px;
+      height: 50px;
+    }
+
+    footer p {
+      font-size: 12px;
+      margin-top: 1rem;
+    }
+
+    footer .nav-text {
+      font-size: 12px;
+    }
+  }
+</style>
 
 <footer class="bg-dark text-white">
   <div class="container">
-    <div class=" d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      
-        <a href="/" class=" d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto  text-white text-decoration-none">
-           <img src="{% static 'main/img/logo.png' %}" alt=""  width="70" height="70">
-          </a>
-          <p class="col-md-4 mb-0 text-white">© 2023 Created by <a href="" class="text-danger text-decoration-none">Weblider</a></p>
-  
-      <ul class="nav col-md-4  justify-content-end">
-        <li class="nav-item"><a href="#about" class="nav-link px-2 text-white nav-text">Biz haqimizda</a></li>
-        <li class="nav-item"><a href="#gallery" class="nav-link px-2 text-white nav-text">Galereya</a></li>
-        <li class="nav-item"><a href="#teacher" class="nav-link px-2 text-white nav-text">Ustozlar</a></li>
-        <li class="nav-item"><a href="#news" class="nav-link px-2 text-white nav-text">Yangiliklar</a></li>
-        <li class="nav-item"><a href="#contact" class="nav-link px-2 text-white nav-text">Aloqa</a></li>
+    <div
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+      >
+        <img
+          src="{% static 'main/img/logo.png' %}"
+          alt=""
+          width="70"
+          height="70"
+        />
+      </a>
+      <p class="col-md-4 mb-0 text-white">
+        © 2023 Created by
+        <a href="" class="text-decoration-none">Weblider</a>
+      </p>
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item">
+          <a href="#about" class="nav-link px-2 text-white nav-text"
+            >Biz haqimizda</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#gallery" class="nav-link px-2 text-white nav-text"
+            >Galereya</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#teacher" class="nav-link px-2 text-white nav-text"
+            >Ustozlar</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#news" class="nav-link px-2 text-white nav-text"
+            >Yangiliklar</a
+          >
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link px-2 text-white nav-text">Aloqa</a>
+        </li>
       </ul>
     </div>
   </div>
-  </footer>
+</footer>
