@@ -3,13 +3,10 @@
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
 />
-<link rel="stylesheet" href="{% static 'main/css/teachers.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/teachers.css' %}" />
 
-
-
-
-<div id="teacher" style="scroll-margin-top: 10rem">
-    <div   id="teachers" class=" teachers-swiper-container container" >
+<div id="teacher" class="container" style="scroll-margin-top: 10rem">
+  <div id="teachers" class="teachers-swiper-container container">
     <h2 class="maktab-rasmlari text-white">Ustozlarimiz</h2>
     <p class="text-center text-white w-75 mx-auto mb-5">
       4 - sonli umumta'lim ustozlari nafaqat bilimdon, balki yoshlarni
@@ -28,18 +25,16 @@
           src="{{ teacher.teacher_img.url }}"
           alt="{{ teacher.first_name }} {{ teacher.last_name }}"
         />
-        <h5 class="text-white">{{ teacher.first_name|title }} {{ teacher.last_name|title }}</h5>
+        <h5 class="text-white">
+          {{ teacher.first_name|title }} {{ teacher.last_name|title }}
+        </h5>
         <p class="text-white">{{ teacher.bio }}</p>
       </div>
       {% endfor %}
     </div>
-  
-    <div class="swiper-pagination"></div>
   </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <script src="{% static 'main/js/teachers.js' %}"></script>
-
