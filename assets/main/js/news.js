@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
   });
+  
 
   const newsModal = document.getElementById('newsModal');
   const modalBackdrop = document.querySelector('.modal-backdrop');
