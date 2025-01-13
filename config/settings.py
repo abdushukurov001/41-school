@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-32h=4x43a8cj%_z(a!x)x=!zu#3)$n^(qqx7_o7bie(47w%wmu
 DEBUG = True 
 
 # ALLOWED_HOSTS = ['maktab-4.uz']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
