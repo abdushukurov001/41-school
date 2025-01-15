@@ -1,5 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.shortcuts import redirect
+
 
 class Redirect404Middleware:
     def __init__(self, get_response):
@@ -8,5 +8,5 @@ class Redirect404Middleware:
     def __call__(self, request):
         response = self.get_response(request)
         if response.status_code == 404:
-            return HttpResponseRedirect(reverse('home'))
+            return redirect('home')
         return response
