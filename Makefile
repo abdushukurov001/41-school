@@ -17,4 +17,13 @@ run:
 stop:
 	docker stop school-4-container
 
+migrate:
+	python3 ./manage.py migrate
+
+collect-static:
+	python3 ./manage.py collectstatic --no-input
+
+run-server:migrate collect-static
+	python3 ./manage.py runserver 0.0.0.0:8000
+
 refresh: stop clean build run
