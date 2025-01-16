@@ -30,9 +30,7 @@ DEBUG = True
 # ALLOWED_HOSTS = ['maktab-4.uz']
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 ALLOWED_HOSTS = ['*']
-
-
-
+CSRF_TRUSTED_ORIGINS = ['maktab-4.uz']
 # Application definition
 
 INSTALLED_APPS = [
