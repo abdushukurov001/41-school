@@ -148,3 +148,6 @@
 #newsSwiper .swiper-slide.swiper-slide-active {
   transform: scale(1) !important;
 }
+.card-title {
+  text-transform: uppercase;
+}

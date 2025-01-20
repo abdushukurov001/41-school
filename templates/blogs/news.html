@@ -10,70 +10,74 @@
   class="container mb-5"
   style="scroll-margin-top: 9rem; margin-top: 150px"
 >
-  <section
-    id="news"
-    class="container mb-5"
-    style="scroll-margin-top: 9rem; margin-top: 150px"
+  <h2 class="text-center card-title text-dark mb-5">Yangiliklar</h2>
+  <div id="newsSwiper" class="swiper">
+    <div class="swiper-wrapper">
+      {% for new in news %}
+      <div class="swiper-slide">
+        <div class="card h-100 shadow-sm">
+          <img
+            src="{{ new.news_img.url }}"
+            class="card-img-top"
+            alt="Yangilik surati"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-black news-title">{{ new.title }}</h5>
+            <p class="card-text">
+              {{ new.news|slice:":100" }}<span class="dots">...</span>
+              <span
+                class="read-more"
+                data-bs-toggle="modal"
+                data-bs-target="#newsModal"
+                data-title="{{ new.title }}"
+                data-text="{{ new.news }}"
+                data-img="{{ new.news_img.url }}"
+                >Batafsil</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="newsModal"
+    tabindex="-1"
+    aria-labelledby="newsModalLabel"
+    aria-hidden="true"
   >
-    <h2 class="text-center card-title text-dark mb-5">Yangiliklar</h2>
-    <div id="newsSwiper" class="swiper">
-      <div class="swiper-wrapper">
-        {% for new in news %}
-        <div class="swiper-slide">
-          <div class="card h-100 shadow-sm">
-            <img
-              src="{{ new.news_img.url }}"
-              class="card-img-top"
-              alt="Yangilik surati"
-            />
-            <div class="card-body">
-              <h5 class="card-title text-black">{{ new.title|upper }}</h5>
-              <p class="card-text">
-                {{ new.news|slice:":100" }}<span class="dots">...</span>
-                <span
-                  class="read-more"
-                  data-bs-toggle="modal"
-                  data-bs-target="#newsModal"
-                  data-title="{{ new.title }}"
-                  data-text="{{ new.news }}"
-                  data-img="{{ new.news_img.url }}"
-                  >Batafsil</span
-                >
-              </p>
-            </div>
-          </div>
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newsModalLabel">Yangilik</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div
-      class="modal fade"
-      id="newsModal"
-      tabindex="-1"
-      aria-labelledby="newsModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="newsModalLabel">Yangilik</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <img id="modalImage" class="img-fluid mb-3" alt="Yangilik surati" />
-            <p id="modalText"></p>
-          </div>
+        <div class="modal-body">
+          <img id="modalImage" class="img-fluid mb-3" alt="Yangilik surati" />
+          <p id="modalText"></p>
         </div>
       </div>
     </div>
-  </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <script src="{% static 'main/js/news.js' %}"></script>
+  </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'main/js/news.js' %}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const titles = document.querySelectorAll('.news-title');
+    titles.forEach(function (title) {
+      if (title.textContent.length > 25) {
+        title.textContent = title.textContent.slice(0, 25) + '...';
+      }
+    });
+  });
+</script>

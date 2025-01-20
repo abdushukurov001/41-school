@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     },
   });
-  
 
   const newsModal = document.getElementById('newsModal');
   const modalBackdrop = document.querySelector('.modal-backdrop');
@@ -52,5 +51,15 @@ document.addEventListener('DOMContentLoaded', function () {
       modalImage.src = img;
       modalText.textContent = text;
     });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const titles = document.querySelectorAll('.news-title');
+
+  titles.forEach(function (title) {
+    if (title.textContent.length > 25) {
+      title.textContent = title.textContent.slice(0, 25) + '...';
+    }
   });
 });
